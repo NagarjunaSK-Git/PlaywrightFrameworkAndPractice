@@ -34,7 +34,11 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-     // use: { ...devices['Desktop Chrome'] },
+      use: { 
+        /** Use this channel when it is needed to use the locally installed chrome browser, 
+         * comment it for using chromium engine which is recommended*/ 
+        //channel: 'chrome'
+       },
     },
 
    /**  {
