@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",
+    "outDir": "./typescriptbasics/dist",
+    "strict": true
+  },
+  "include": [
+    "./typescriptbasics/**/*.ts"
+  ]
+}
