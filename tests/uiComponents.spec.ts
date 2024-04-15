@@ -226,7 +226,7 @@ test.describe('Date Picker Handling', async () => {
          * exact true in locator match is provided else it will look for contains of text and will create issue
          * such as by providing .getByText('1') will match dates 1, 12, 21, 31 , 16 etc and many
          */
-        await page.locator('[class="day-cell ng-star-inserted"]').getByText('13', {exact: true}).click();
+        await page.locator('[class="day-cell ng-star-inserted"]').getByText('13', { exact: true }).click();
         await expect(calendarInputField).toHaveValue('Apr 13, 2024');
 
 
@@ -261,9 +261,64 @@ test.describe('Date Picker Handling', async () => {
 
 
         /**Get the today date and add 7 calendar days , accepted format change and compare calendar and expected month year until they 
-        match, get out of loop and select the date and assert. */ 
-       
+        match, get out of loop and select the date and assert. */
+
     })
+
+});
+
+test.describe('Slider Mouse Actions Handling', async () => {
+    test.beforeEach('Navigate to the Slider', async () => {
+        await page.goto('https://www.akveo.com/ngx-admin/themes');
+        await expect(page).toHaveTitle("Ngx-admin themes for e-commerce dashboard on Angular 15+ and Nebular");
+        await page.locator('nb-card-header', { hasText: 'Material Light' }).click();
+        await page.getByRole('link', { name: 'IoT Dashboard' }).click();
+    });
+
+    test('Slider Element', async () => {
+
+        // Update attribute when moving the slider. Values are feeded by manually observing the attribute values manually.
+        const tempGauge = page.locator('[tabtitle="Temperature"] ngx-temperature-dragger circle');
+
+        /**https://playwright.dev/docs/evaluating
+         * 
+         * const status = await page.evaluate(async () => {
+            const response = await fetch(location.href);
+            return response.status;
+          });
+
+          Other example:
+          const locator = page.locator('button');
+a         await locator.evaluate((node) => node.click());
+
+          The node/element parameter in the locator.evaluate() method is a reference to the element that the locator matches. 
+          (here it is some button element)
+          This parameter can be used to access the element's properties and methods, or to execute JavaScript code on the element.
+          The node/element parameter can be used to perform any action that can be performed on a DOM element. 
+          This makes the locator.evaluate() method a very powerful tool for interacting with web pages.
+    
+          */
+        await tempGauge.evaluate(ele => {
+            ele.setAttribute('cx', '232.630');
+            ele.setAttribute('cy', '232.630');
+        });
+        await tempGauge.click();
+
+        /** Mouse movement
+         * Approach is not really recommended personally and moving mouse might hinder this action while running locally.
+        const tempBox = page.locator('[tabtitle="Temperature"] ngx-temperature-dragger');
+        await tempBox.scrollIntoViewIfNeeded();
+    
+        const box = await tempBox.boundingBox();
+        const x = box?.x + box?.width / 2;
+        const y = box?.y + box?.height / 2;
+        await page.mouse.move(x, y);
+        await page.mouse.down();
+        await page.mouse.move(x +100, y);
+        await page.mouse.move(x+100, y+100);
+        await page.mouse.up();
+        await expect(tempBox).toContainText('30'); */
+    });
 
 });
 
