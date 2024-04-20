@@ -30,19 +30,38 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
-    headless: false,
+
     
   },
-
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
+      name: 'chromiumheaded',
+      use: { 
+        viewport: null,
+        launchOptions: {
+          args: ['--start-maximized'],
+          headless: false
+        },
+       },
+    },
+    {
+      name: 'chromechannel',
       use: { 
         /** Use this channel when it is needed to use the locally installed chrome browser, 
          * comment it for using chromium engine which is recommended*/ 
-        //channel: 'chrome'
+        channel: 'chrome'
        },
+    },
+    {
+      name: 'chromiumheadless',
+      use: { 
+        viewport: {width:1440,height:900 },
+        launchOptions: {
+          args:['--start-maximized'],
+          headless: true
+        },
+        },
     },
 
    /**  {
