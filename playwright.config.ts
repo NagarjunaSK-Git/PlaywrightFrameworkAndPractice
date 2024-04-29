@@ -23,7 +23,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  timeout: 5 * 60 * 1000,
+  timeout: 3 * 60 * 1000,
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
@@ -63,6 +63,23 @@ export default defineConfig({
         },
         },
     },
+    // Setup project for saving the login state
+    { 
+      name: 'setupsave', 
+      testMatch: /authStorageSetup\.spec\.ts/ 
+    },
+    {
+      name: 'saveloginstate',
+      use: { 
+        viewport: null,
+        channel: 'chrome',
+        launchOptions: {
+          args: ['--start-maximized'],
+          headless: false
+        },
+       },
+       dependencies: ['setupsave'],
+    }
 
    /**  {
       name: 'firefox',
