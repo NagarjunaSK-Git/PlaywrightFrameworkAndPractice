@@ -49,7 +49,7 @@ test("AJAX Website Network Modify @NetworkIntercept", async () => {
         console.log(`Logged response status: ${response.status()}`);
         console.log(`Logged response status text: ${response.statusText()}`);
         console.log(`Logged response url:  ${response.url()}`);
-        console.log(`Logged response body:  ${response.text()}`);
+        console.log(`Logged response body:  ${await response.text()}`);
         //body = body.replace('<title>', '<title>My prefix:');
         await route.fulfill({
           // Pass all fields from the response.
