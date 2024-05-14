@@ -4,18 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js",
+    "browserinstall": "npx playwright install --with-deps chromium",
+    "hrmtest": "npx playwright test -g @addemployeeHrm --project=chromiumheaded"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.42.1",
+    "@playwright/test": "^1.44.0",
     "@types/node": "^20.12.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.3"
   },
   "dependencies": {
-    "crypto-js": "^4.2.0"
+    "crypto-js": "^4.2.0",
+    "dotenv": "^16.4.5",
+    "playwright": "^1.44.0"
   }
 }

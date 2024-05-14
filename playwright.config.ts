@@ -1,10 +1,30 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig } from '@playwright/test';
+import { config } from 'dotenv';
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// require('dotenv').config();
+//https://www.npmjs.com/package/dotenv
+
+/**  
+Step1: Initialize command
+npm ci
+
+Step2: Command to install playwright
+npm run browserinstall
+
+Step3: Commands to run script
+npm run hrmtest --env=UAT
+*/
+if (process.env.npm_config_env) {
+  console.log("ENVIRONMENT: ", process.env.npm_config_env);
+  config({
+    path: `.env.${process.env.npm_config_env}`,
+    override: true,
+  });
+} else{
+  config({
+    path: `.env.QA`,
+    override: true,
+  });
+}
 
 /**
  * See https://playwright.dev/docs/test-configuration.
