@@ -7,7 +7,8 @@
     "build": "tsc",
     "start": "npm run build && node dist/index.js",
     "browserinstall": "npx playwright install --with-deps chromium",
-    "hrmtest": "npx playwright test -g @addemployeeHrm --project=chromiumheaded"
+    "hrmtest": "npx playwright test -g @addemployeeHrm --project=chromiumheaded",
+    "hrmtestPM": "npx playwright test -g @addemployeeHrmPM --project=chromiumheaded"
   },
   "keywords": [],
   "author": "",

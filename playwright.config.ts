@@ -11,6 +11,7 @@ Step2: Command to install playwright
 npm run browserinstall
 
 Step3: Commands to run script
+npm run hrmtestPM --env=QA
 npm run hrmtest --env=UAT
 */
 if (process.env.npm_config_env) {
