@@ -1,6 +1,8 @@
 import { Page } from "@playwright/test";
+import  { HelperBase } from '../utils/helperBase';
 
 class AddEmployeePage {
+
   constructor(private readonly page: Page) {}
 
   private readonly firstNameTextBox = this.page.getByRole("textbox", {
@@ -24,6 +26,7 @@ class AddEmployeePage {
     await this.lastNameTextBox.fill("Ar");
     await this.middleNameTextBox.fill("Automation");
     await this.idTextBox.fill("1234567890");
+    await new HelperBase(this.page).waitForNumberOfSeconds(5);
     await this.saveButton.click();
   }
 }
