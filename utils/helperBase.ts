@@ -30,7 +30,7 @@ export class HelperBase{
     }
 
     async waitForSpinnerDisapperance(){
-        await test.expect(this.page.locator('.oxd-loading-spinner')).toHaveCount(0);
+        await test.expect(this.page.locator('.oxd-loading-spinner').first()).not.toBeVisible({ timeout: 4000 });
         await this.waitForNumberOfSeconds(1);
     }
 

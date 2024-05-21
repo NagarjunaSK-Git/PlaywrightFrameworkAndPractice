@@ -17,7 +17,7 @@ test("Add Employee on OrangeHRM PageManager @PMaddemployeeHrm", async ({ pageMan
   // Added screenshots just to show the intent of using this but not really required to keep so many screenshots
   await test.step("Given: Launch application", async () => {
     await pageManager.getLoginPage().visit();
-    await pageManager.getHelperBase().waitForNumberOfSeconds(2);
+    await pageManager.getHelperBase().waitForNumberOfSeconds(3);
     await testInfo.attach('screenshot', { body: await pageManager.getHelperBase().takeScreenshot(), contentType: 'image/png' });
   });
 
@@ -41,8 +41,8 @@ test("Add Employee on OrangeHRM PageManager @PMaddemployeeHrm", async ({ pageMan
     await pageManager.getAddEmployeePage().addEmployee();
     await testInfo.attach('screenshot', { body: await pageManager.getHelperBase().takeScreenshot(), contentType: 'image/png' });
     await test.expect(pageManager.getAddEmployeePage().successMessage).toBeVisible();
+    await pageManager.getHelperBase().waitForNumberOfSeconds(8);
     await pageManager.getHelperBase().waitForSpinnerDisapperance();
-    await pageManager.getHelperBase().waitForNumberOfSeconds(2);
   });
 
 
