@@ -22,11 +22,12 @@ class AddEmployeePage {
   public readonly successMessage = this.page.getByText(/Successfully Saved/i);
 
   async addEmployee() {
-    await this.firstNameTextBox.fill("Test ");
+    await this.firstNameTextBox.fill("Test");
     await this.lastNameTextBox.fill("Ar");
     await this.middleNameTextBox.fill("Automation");
-    await this.idTextBox.fill("1234567890");
-    await new HelperBase(this.page).waitForNumberOfSeconds(5);
+    let employeeID = (await new HelperBase(this.page).provideEmployeeID()).toString();
+    await this.idTextBox.fill(employeeID);
+    await new HelperBase(this.page).waitForNumberOfSeconds(3);
     await this.saveButton.click();
   }
 }

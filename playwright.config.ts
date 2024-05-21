@@ -42,7 +42,8 @@ export default defineConfig({
   workers: process.env.CI ? 2 : undefined,*/
    workers: 2,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [['html', {outputFolder: 'reports', open: 'never'}],
+            ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   timeout: 3 * 60 * 1000,
   use: {
@@ -51,6 +52,7 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
+    screenshot: 'on'
 
     
   },
