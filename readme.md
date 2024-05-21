@@ -1,4 +1,4 @@
-# BaseUICucumber
+# Playwright Framework and Examples of UI Actions
 An End-to-End UI Test Automation Framework and practice UI actions based upon Playwright (v1.44), Node v20.
 
 [![Playwright UI Automation Tests](https://github.com/NagarjunaSK-Git/PlaywrightFrameworkAndPractice/actions/workflows/uitests.yml/badge.svg)](https://github.com/NagarjunaSK-Git/PlaywrightFrameworkAndPractice/actions/workflows/uitests.yml)
@@ -21,7 +21,7 @@ Click on Testing in Left Widget for running test from Playwright Test for VSCode
 Run test using command `npm run hrmtestPM --env=QA -- --grep @addemployeeHrm`
 
 # Other NPM Command Samples
-* Install browser `npm run browserinstall"`
+* Install browser `npm run browserinstall`
 * Run in Serial mode `npm run hrmtestPM --env=QA -- --workers=1 --grep '@addemployeeHrm'`
 * Run in Parallel mode `npm run hrmtestPM --env=QA -- --workers=5 --grep '@addemployeeHrm'`
 * Run in different environment `npm run hrmtestPM --env=UAT -- --workers=1 --grep "@PMaddemployeeHrm"`
