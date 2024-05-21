@@ -1,0 +1,48 @@
+name: Playwright UI Automation Tests
+on:
+  workflow_dispatch:
+   inputs:
+      groups:
+        description: 'Test Filter or Tags'
+        required: true
+        default: 'PMaddemployeeHrm'
+      thread_count:
+        description: 'Parallelism Option'
+        required: false
+        default: '1'
+      test_environment:
+        description: 'Test Environment'
+        required: false
+        default: 'QA'
+  schedule:
+    - cron: "1 1 * * FRI"
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: windows-2019
+    env:
+      GROUPS: ${{ github.event.inputs.groups }}
+      THREAD_COUNT: ${{ github.event.inputs.thread_count }}
+      TEST_ENVIRONMENT: ${{ github.event.inputs.test_environment }}
+    
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20
+    - name: Install dependencies
+      run: npm ci
+    - name: Install Browsers
+      run: npm run browserinstall
+    - name: Run E2E tests
+      run: npm run hrmtestPM --env="${TEST_ENVIRONMENT}" -- --workers="${THREAD_COUNT}" -grep @"${GROUPS}"
+    - uses: actions/upload-artifact@v4
+      if: ${{ !cancelled() }}
+      with:
+        name: UI Test Run Report
+        path: reports/
+        retention-days: 30
