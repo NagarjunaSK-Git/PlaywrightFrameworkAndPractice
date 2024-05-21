@@ -8,7 +8,7 @@
     "start": "npm run build && node dist/index.js",
     "browserinstall": "npx playwright install --with-deps --force chromium",
     "hrmtest": "npx playwright test -g @addemployeeHrm --project=chromiumheaded",
-    "hrmtestPM": "npx playwright test -g @PMaddemployeeHrm --project=chromiumheaded"
+    "hrmtestPM": "npx playwright test --project=chromiumheaded"
   },
   "keywords": [],
   "author": "",
