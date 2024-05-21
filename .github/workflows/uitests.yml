@@ -5,14 +5,14 @@ on:
       groups:
         description: 'Test Filter or Tags'
         required: true
-        default: 'PMaddemployeeHrm'
-      workers_count:
+        default: '@PMaddemployeeHrm'
+      thread_count:
         description: 'Parallelism Option'
         required: false
         default: '1'
       test_environment:
         description: 'Test Environment'
-        required: false
+        required: true
         default: 'QA'
   schedule:
     - cron: "1 1 * * FRI"
@@ -22,12 +22,11 @@ on:
 
 jobs:
   test:
-    name: Run HRM UI Tests in Playwright
     timeout-minutes: 60
     runs-on: windows-2019
     env:
       GROUPS: ${{ github.event.inputs.groups }}
-      WORKERS_COUNT: ${{ github.event.inputs.workers_count }}
+      THREAD_COUNT: ${{ github.event.inputs.thread_count }}
       TEST_ENVIRONMENT: ${{ github.event.inputs.test_environment }}
     
     steps:
@@ -40,7 +39,7 @@ jobs:
     - name: Install Browsers
       run: npm run browserinstall
     - name: Run E2E tests
-      run: npm run hrmtestPM --env="${TEST_ENVIRONMENT}" -- --workers="${WORKERS_COUNT}" -grep @"${GROUPS}"
+      run: npm run hrmtestPM --env="${TEST_ENVIRONMENT}" -- --workers="${THREAD_COUNT}" --grep "${GROUPS}"
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
