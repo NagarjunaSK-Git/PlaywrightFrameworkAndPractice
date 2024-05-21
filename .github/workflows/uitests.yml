@@ -26,9 +26,9 @@ jobs:
     timeout-minutes: 60
     runs-on: windows-2019
     env:
-      GROUPS: ${{ github.event.inputs.groups }}
-      THREAD_COUNT: ${{ github.event.inputs.thread_count }}
-      TEST_ENVIRONMENT: ${{ github.event.inputs.test_environment }}
+      GROUPS: ${{ github.event.inputs.groups || @PMaddemployeeHrm }}
+      THREAD_COUNT: ${{ github.event.inputs.thread_count || 1 }}
+      TEST_ENVIRONMENT: ${{ github.event.inputs.test_environment || QA }}
     
     steps:
     - uses: actions/checkout@v4
