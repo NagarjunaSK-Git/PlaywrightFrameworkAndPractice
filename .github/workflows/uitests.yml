@@ -47,6 +47,6 @@ jobs:
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
-        name: UI Test Run Report
+        name: UI_TestRun_HTML_Report
         path: reports/
         retention-days: 30
