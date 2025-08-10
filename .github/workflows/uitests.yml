@@ -24,7 +24,7 @@ jobs:
   test:
     name: Execute UI Test Workflow
     timeout-minutes: 60
-    runs-on: windows-2019
+    runs-on: windows-2025
     env:
       GROUPS: ${{ github.event.inputs.groups || '@PMaddemployeeHrm' }}
       THREAD_COUNT: ${{ github.event.inputs.thread_count || '1' }}
