@@ -15,9 +15,8 @@ class AddEmployeePage {
     name: "Middle Name",
   });
   private readonly idTextBox = this.page
-    .locator("form")
-    .getByRole("textbox")
-    .nth(4);
+    .locator('xpath=(//div[contains(@class,\'orangehrm-employee-form\')]//input)[4]');
+
   private readonly saveButton = this.page.getByRole("button", { name: "Save" });
   public readonly successMessage = this.page.getByText(/Successfully Saved/i);
 
