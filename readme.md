@@ -1,5 +1,5 @@
 # Playwright Framework and Examples of UI Actions
-An End-to-End UI Test Automation Framework and practice UI actions based upon Playwright (v1.44), Node v20.
+An End-to-End UI Test Automation Framework and practice UI actions based upon Playwright (v1.57), Node v24+.
 
 [![Playwright UI Automation Tests](https://github.com/NagarjunaSK-Git/PlaywrightFrameworkAndPractice/actions/workflows/uitests.yml/badge.svg)](https://github.com/NagarjunaSK-Git/PlaywrightFrameworkAndPractice/actions/workflows/uitests.yml)
 
